@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<title>Admin Login | Vishudh Agro</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/admin.css') }}">
+
+</head>
+
+
+
+<body class="admin-body">
+
+
+<div class="login-box">
+
+<h2>🌿 Admin Login</h2>
+
+<!-- FIX: Flash error message now appears BEFORE the form so user sees it immediately -->
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<p class="error" role="alert">
+{{ messages[0] }}
+</p>
+{% endif %}
+{% endwith %}
+
+
+<form method="POST" action="/admin">
+
+<input
+    type="text"
+    name="username"
+    id="username"
+    placeholder="Username"
+    autocomplete="username"
+    required
+>
+
+<input
+    type="password"
+    name="password"
+    id="password"
+    placeholder="Password"
+    autocomplete="current-password"
+    required
+>
+
+<button type="submit" id="login-submit-btn">
+Login
+</button>
+
+</form>
+
+</div>
+
+
+
+</body>
+
+</html>

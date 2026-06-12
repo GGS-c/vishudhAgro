@@ -1,0 +1,287 @@
+{% extends "base.html" %}
+
+
+{% block title %}Our Products | Vishudh Agro{% endblock %}
+
+{% block meta_description %}Browse all Vishudh Agro biomass products – briquettes, pellets, rice husk, wood chips and industrial coal. Premium quality eco-friendly fuel for industries.{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+
+
+
+<!-- PAGE HERO -->
+
+
+<section class="page-hero">
+
+
+<h1>
+
+Our Products
+
+</h1>
+
+
+<p>
+
+High quality sustainable agro energy solutions
+for modern industries
+
+</p>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- PRODUCTS SECTION -->
+
+
+<section class="section">
+
+
+<div class="section-title">
+
+
+<h2>
+
+Our Industrial Solutions
+
+</h2>
+
+
+
+<p>
+
+Reliable • Efficient • Eco Friendly
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="product-grid">
+
+
+
+
+
+{% for product in products %}
+
+
+
+
+
+<div class="product-card">
+
+
+
+
+
+<!-- PRODUCT IMAGE -->
+
+
+<img
+
+    src="{{ product.image_url }}"
+
+    alt="{{ product.name }} – Vishudh Agro"
+
+    loading="lazy"
+
+>
+
+
+
+
+
+
+
+<!-- PRODUCT NAME -->
+
+
+<h3>
+
+{{ product.name }}
+
+</h3>
+
+
+
+
+
+
+
+<!-- DESCRIPTION -->
+
+
+<p>
+
+{{ product.description }}
+
+</p>
+
+
+
+
+
+
+
+
+
+<!-- FEATURES -->
+
+
+{% if product.features %}
+
+
+<ul>
+
+
+{% for feature in product.features.split('\n') %}
+
+
+
+{% if feature.strip() %}
+
+
+<li>
+
+🌱 {{ feature }}
+
+</li>
+
+
+{% endif %}
+
+
+
+
+{% endfor %}
+
+
+</ul>
+
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+<!-- ENQUIRY BUTTON -->
+
+
+<a
+
+href="/contact"
+
+class="product-btn"
+
+>
+
+
+Send Enquiry
+
+
+</a>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+{% endfor %}
+
+
+
+
+
+
+
+
+<!-- NO PRODUCTS -->
+
+
+{% if products|length == 0 %}
+
+
+
+<div class="empty-box">
+
+
+<h3>
+
+No Products Added Yet
+
+</h3>
+
+
+<p>
+
+Products will appear here after admin upload.
+
+</p>
+
+
+</div>
+
+
+
+{% endif %}
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+{% endblock %}

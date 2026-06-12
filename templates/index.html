@@ -1,0 +1,657 @@
+{% extends "base.html" %}
+
+
+{% block title %}Home | Vishudh Agro{% endblock %}
+
+{% block meta_description %}Vishudh Agro – Leading biomass briquette and pellet manufacturer in Maharashtra, India. Sustainable industrial fuel for boilers, kilns and furnaces.{% endblock %}
+
+
+
+
+{% block content %}
+
+
+
+
+
+<!-- ================= HERO ================= -->
+
+
+<section class="hero">
+
+
+<div class="hero-content">
+
+
+
+<span class="tagline">
+
+🌱 Sustainable Industrial Energy
+
+</span>
+
+
+
+
+<h1>
+
+Powering Industries With
+
+<br>
+
+Sustainable Biomass Energy
+
+</h1>
+
+
+
+
+
+<p>
+
+Premium quality biomass fuel solutions
+helping industries move towards a cleaner,
+greener and efficient future.
+
+</p>
+
+
+
+
+
+<div class="hero-buttons">
+
+
+
+<a href="/contact"
+class="primary-btn">
+
+Get Quote
+
+</a>
+
+
+
+
+<a href="/products"
+class="secondary-btn">
+
+Explore Products
+
+</a>
+
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- ================= STATS ================= -->
+
+
+<section class="stats">
+
+
+
+<div class="stat-card">
+
+<h2>10+</h2>
+
+<p>
+Years Experience
+</p>
+
+</div>
+
+
+
+
+
+<div class="stat-card">
+
+<h2>500+</h2>
+
+<p>
+Industrial Customers
+</p>
+
+</div>
+
+
+
+
+
+
+<div class="stat-card">
+
+<h2>50K+</h2>
+
+<p>
+Tons Supplied
+</p>
+
+</div>
+
+
+
+
+
+
+<div class="stat-card">
+
+<h2>ISO</h2>
+
+<p>
+Certified Quality
+</p>
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- ================= ABOUT ================= -->
+
+
+<section class="section about-home">
+
+
+
+<div class="about-img">
+
+
+<img
+
+src="{{url_for('static',
+filename='images/factory/factory.jpg')}}"
+
+alt="Vishudh Agro Factory"
+
+loading="lazy"
+
+>
+
+
+</div>
+
+
+
+
+
+<div class="about-text">
+
+
+
+<span>
+
+About Company
+
+</span>
+
+
+
+
+<h2>
+
+Reliable Biomass Energy Partner
+For Industries
+
+</h2>
+
+
+
+
+
+<p>
+
+We provide high quality biomass products
+and sustainable industrial fuel solutions.
+
+</p>
+
+
+
+
+
+<ul>
+
+
+<li>
+✔ Sustainable Energy Solutions
+</li>
+
+
+<li>
+✔ Quality Tested Products
+</li>
+
+
+<li>
+✔ Strong Supply Network
+</li>
+
+
+<li>
+✔ Customer Focused Approach
+</li>
+
+
+
+</ul>
+
+
+
+
+
+<a href="/about"
+class="primary-btn">
+
+Learn More
+
+</a>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ================= PRODUCTS FROM DATABASE ================= -->
+
+
+
+<section class="section products-section">
+
+
+
+<div class="section-title">
+
+
+<h2>
+
+Our Products
+
+</h2>
+
+
+
+<p>
+
+Premium industrial fuel solutions
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="product-grid">
+
+
+
+
+
+
+{% for product in products %}
+
+
+
+
+<div class="product-card">
+
+
+
+
+
+<img
+
+src="{{ product.image_url }}"
+
+alt="{{ product.name }} – Vishudh Agro"
+
+loading="lazy"
+
+>
+
+
+
+
+
+
+<h3>
+
+{{ product.name }}
+
+</h3>
+
+
+
+
+
+
+<p>
+
+{{ product.description[:100] }}
+
+</p>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+{% endfor %}
+
+
+
+
+
+
+
+
+
+{% if products|length == 0 %}
+
+
+<p>
+
+No products available.
+
+</p>
+
+
+{% endif %}
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<a href="/products"
+class="center-btn">
+
+View All Products
+
+</a>
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ================= WHY CHOOSE ================= -->
+
+
+
+<section class="section why">
+
+
+
+<div class="section-title">
+
+
+<h2>
+
+Why Choose Us
+
+</h2>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="why-grid">
+
+
+
+
+
+<div>
+
+🌱
+
+<h3>
+Eco Friendly
+</h3>
+
+<p>
+Cleaner renewable energy.
+</p>
+
+</div>
+
+
+
+
+
+
+
+
+<div>
+
+🏭
+
+<h3>
+
+Industrial Quality
+
+</h3>
+
+<p>
+
+Premium manufacturing standards.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div>
+
+🚚
+
+<h3>
+
+Fast Delivery
+
+</h3>
+
+<p>
+
+Strong supply network.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div>
+
+⭐
+
+
+<h3>
+
+Trusted Partner
+
+</h3>
+
+
+<p>
+
+Long term customer relations.
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- ================= CTA ================= -->
+
+
+
+<section class="cta">
+
+
+
+<h2>
+
+Looking For Reliable Biomass Fuel Supplier?
+
+</h2>
+
+
+
+
+<p>
+
+Connect with us today and get the best solution
+for your industry.
+
+</p>
+
+
+
+
+
+<a href="/contact"
+class="primary-btn">
+
+
+Contact Now
+
+
+</a>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+{% endblock %}

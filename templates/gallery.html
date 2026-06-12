@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+
+{% block title %}Gallery | Vishudh Agro{% endblock %}
+
+{% block meta_description %}Explore the Vishudh Agro gallery – factory, products, machines and transport images showcasing our biomass manufacturing excellence.{% endblock %}
+
+
+
+
+
+{% block content %}
+
+
+
+
+<!-- PAGE HERO -->
+
+
+<section class="page-hero">
+
+
+<h1>
+
+Our Gallery
+
+</h1>
+
+
+
+<p>
+
+Explore our factory, products and manufacturing excellence
+
+</p>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- GALLERY SECTION -->
+
+
+<section class="section">
+
+
+
+<div class="section-title">
+
+
+<h2>
+
+Manufacturing Gallery
+
+</h2>
+
+
+<p>
+
+Our work, process and quality
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Filter Buttons -->
+
+
+<div class="gallery-filter">
+
+
+<button onclick="filterGallery('all')">
+
+All
+
+</button>
+
+
+
+<button onclick="filterGallery('Factory')">
+
+Factory
+
+</button>
+
+
+
+<button onclick="filterGallery('Products')">
+
+Products
+
+</button>
+
+
+
+<button onclick="filterGallery('Machines')">
+
+Machines
+
+</button>
+
+
+
+
+<button onclick="filterGallery('Transport')">
+
+Transport
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Images -->
+
+
+<div class="gallery-grid">
+
+
+
+{% for img in images %}
+
+
+<div 
+
+class="gallery-item"
+
+data-category="{{img.category}}"
+
+>
+
+
+
+<img 
+
+src="{{img.image_url}}"
+
+alt="{{img.category}} – Vishudh Agro"
+
+loading="lazy"
+
+>
+
+
+
+</div>
+
+
+{% endfor %}
+
+
+
+
+
+
+
+{% if images|length == 0 %}
+
+
+<p>
+
+No images uploaded yet.
+
+</p>
+
+
+{% endif %}
+
+
+
+
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+{% endblock %}

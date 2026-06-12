@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<title>Admin Dashboard | Vishudh Agro</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/admin.css') }}">
+
+</head>
+
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+
+<!-- =====================
+HEADER
+===================== -->
+
+
+<div class="admin-header">
+
+
+<h1>
+🌿 Vishudh Agro Admin Dashboard
+</h1>
+
+
+<a href="/logout" class="logout">
+Logout
+</a>
+
+
+</div>
+
+
+
+<!-- =====================
+FLASH MESSAGE
+===================== -->
+
+
+{% with messages = get_flashed_messages() %}
+
+
+{% if messages %}
+
+
+<p class="success">
+
+{{ messages[0] }}
+
+</p>
+
+
+{% endif %}
+
+
+{% endwith %}
+
+
+
+
+<!-- =====================
+ADD PRODUCT
+===================== -->
+
+
+<div class="upload-card">
+
+
+<h2>
+➕ Add Product
+</h2>
+
+
+
+<form
+action="/add-product"
+method="POST"
+enctype="multipart/form-data"
+>
+
+
+<label>Product Name</label>
+
+<input
+type="text"
+name="name"
+placeholder="Example: Biomass Briquettes"
+required
+>
+
+
+
+<label>
+Product Description
+</label>
+
+<textarea
+name="description"
+rows="4"
+placeholder="Enter product description"
+required
+></textarea>
+
+
+
+<label>
+Product Features (one per line)
+</label>
+
+<textarea
+name="features"
+rows="5"
+placeholder="High Heating Value&#10;Eco Friendly&#10;Low Moisture"
+></textarea>
+
+
+
+<label>
+Product Image (JPG, PNG, WEBP)
+</label>
+
+<input
+type="file"
+name="image"
+accept="image/jpeg,image/png,image/webp,image/gif"
+required
+>
+
+<button type="submit">
+Add Product
+</button>
+
+
+</form>
+
+
+</div>
+
+
+
+
+<!-- =====================
+MANAGE PRODUCTS
+===================== -->
+
+
+<div class="upload-card">
+
+
+<h2>
+📦 Manage Products
+</h2>
+
+
+
+{% for product in products %}
+
+
+<div class="manage-item">
+
+
+<img
+src="{{product.image_url}}"
+alt="{{product.name}} – Vishudh Agro product"
+>
+
+
+<div>
+
+
+<h3>
+{{product.name}}
+</h3>
+
+
+<p>
+{{product.description[:80]}}...
+</p>
+
+
+<!-- FIX: Use POST form instead of GET link to prevent CSRF -->
+<form
+action="/delete-product/{{product.id}}"
+method="POST"
+onsubmit="return confirm('Are you sure you want to delete \'{{product.name}}\'? This cannot be undone.')"
+style="display:inline;"
+>
+<button type="submit" class="delete-btn">
+🗑 Delete
+</button>
+</form>
+
+
+</div>
+
+
+</div>
+
+
+{% endfor %}
+
+
+
+{% if products|length == 0 %}
+
+<p>
+No products added yet.
+</p>
+
+{% endif %}
+
+
+</div>
+
+
+
+
+<!-- =====================
+UPLOAD GALLERY
+===================== -->
+
+
+<div class="upload-card">
+
+
+
+<h2>
+📸 Upload Gallery Image
+</h2>
+
+
+
+<form
+action="/upload-gallery"
+method="POST"
+enctype="multipart/form-data"
+>
+
+
+
+<label>
+Select Category
+</label>
+
+
+<select name="category" required>
+
+<option value="">-- Select Category --</option>
+<option value="Factory">Factory</option>
+<option value="Products">Products</option>
+<option value="Machines">Machines</option>
+<option value="Transport">Transport</option>
+
+</select>
+
+
+
+<label>
+Choose Image (JPG, PNG, WEBP)
+</label>
+
+
+<input
+type="file"
+name="image"
+accept="image/jpeg,image/png,image/webp,image/gif"
+required
+>
+
+<button type="submit">
+Upload Image
+</button>
+
+
+</form>
+
+
+</div>
+
+
+
+
+<!-- =====================
+MANAGE GALLERY
+===================== -->
+
+
+<div class="upload-card">
+
+
+<h2>
+🖼 Manage Gallery
+</h2>
+
+
+
+{% for img in images %}
+
+
+<div class="manage-item">
+
+
+<img
+src="{{img.image_url}}"
+alt="{{img.category}} gallery image – Vishudh Agro"
+>
+
+
+<div>
+
+
+<p>
+Category: <strong>{{img.category}}</strong>
+</p>
+
+
+<!-- FIX: Use POST form instead of GET link to prevent CSRF -->
+<form
+action="/delete-gallery/{{img.id}}"
+method="POST"
+onsubmit="return confirm('Delete this gallery image? This cannot be undone.')"
+style="display:inline;"
+>
+<button type="submit" class="delete-btn">
+🗑 Delete
+</button>
+</form>
+
+
+</div>
+
+
+</div>
+
+
+{% endfor %}
+
+
+
+{% if images|length == 0 %}
+
+<p>
+No gallery images uploaded yet.
+</p>
+
+{% endif %}
+
+
+</div>
+
+
+
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title -->
+    <title>
+        {% block title %}Vishudh Agro | Premium Biomass Fuel Solutions{% endblock %}
+    </title>
+
+    <!-- SEO Meta Description -->
+    <meta name="description" content="{% block meta_description %}Vishudh Agro – Premium quality biomass briquettes, pellets and industrial fuel solutions from Maharashtra, India. Sustainable energy for industries.{% endblock %}">
+
+    <!-- Open Graph (Social Sharing) -->
+    <meta property="og:type"        content="website">
+    <meta property="og:site_name"   content="Vishudh Agro">
+    <meta property="og:title"       content="{% block og_title %}Vishudh Agro | Biomass Fuel Solutions{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Premium biomass briquettes and pellets supplier for industries. Eco-friendly, reliable and cost-effective energy from Tondapur, Maharashtra.{% endblock %}">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+
+    <!-- Font Awesome Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    >
+
+    {% block extra_head %}{% endblock %}
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar" role="banner">
+
+
+    <div class="logo">
+        🌿 Vishudh Agro
+    </div>
+
+
+
+    <nav id="menu" role="navigation" aria-label="Main navigation">
+
+        <a href="/"              {% if request.path == '/'              %}class="nav-active"{% endif %}>Home</a>
+        <a href="/about"         {% if request.path == '/about'         %}class="nav-active"{% endif %}>About</a>
+        <a href="/products"      {% if request.path == '/products'      %}class="nav-active"{% endif %}>Products</a>
+        <a href="/manufacturing"  {% if request.path == '/manufacturing'  %}class="nav-active"{% endif %}>Manufacturing</a>
+        <a href="/gallery"       {% if request.path == '/gallery'       %}class="nav-active"{% endif %}>Gallery</a>
+        <a href="/careers"       {% if request.path == '/careers'       %}class="nav-active"{% endif %}>Careers</a>
+
+        <a href="/contact" class="nav-btn" id="get-quote-btn">Get Quote</a>
+
+    </nav>
+
+
+    <!-- Hamburger icon — visible on mobile only -->
+    <button
+        class="menu-icon"
+        onclick="openMenu()"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        id="hamburger-btn"
+    >
+        <i class="fa fa-bars"></i>
+    </button>
+
+
+</header>
+
+
+
+<!-- ================= PAGE CONTENT ================= -->
+
+
+{% block content %}
+{% endblock %}
+
+
+
+<!-- ================= FOOTER ================= -->
+
+
+<footer role="contentinfo">
+
+<div class="footer-container">
+
+
+    <div>
+
+        <h2>Vishudh Agro</h2>
+
+        <p>
+            Delivering sustainable biomass fuel solutions
+            for industries with quality and reliability.
+        </p>
+
+    </div>
+
+
+
+
+    <div>
+
+        <h3>Quick Links</h3>
+
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/products">Products</a>
+        <a href="/manufacturing">Manufacturing</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/careers">Careers</a>
+        <a href="/contact">Contact</a>
+
+    </div>
+
+
+
+
+    <div>
+
+        <h3>Contact Us</h3>
+
+        <p>📍 Tondapur, Maharashtra, India</p>
+
+        <!-- TODO: Replace with real phone number before going live -->
+        <p>📞 +91 XXXXX XXXXX</p>
+
+        <!-- TODO: Replace with real email before going live -->
+        <p>✉ info@vishudhagro.com</p>
+
+    </div>
+
+
+</div>
+
+
+
+<div class="copyright">
+
+    © 2026 Vishudh Agro | All Rights Reserved
+
+</div>
+
+
+
+</footer>
+
+
+
+<!-- WhatsApp Floating Button -->
+<!-- TODO: Replace XXXXXXXXXX with the real WhatsApp number -->
+<a
+    class="whatsapp"
+    href="https://wa.me/91XXXXXXXXXX"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat with us on WhatsApp"
+>
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+</html>
